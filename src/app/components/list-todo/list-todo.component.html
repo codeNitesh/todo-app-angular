@@ -1,0 +1,42 @@
+<div *ngIf="isEmpty; else notEmpty">
+  Content to render when condition is true.
+</div>
+
+<ng-template #notEmpty>
+  <table class="table" m-4>
+    <thead>
+      <tr class="bg-warning">
+        <th scope="col">#</th>
+        <th scope="col">Title</th>
+        <th scope="col">Date</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let todo of todo">
+      <tr class="table-light">
+        <th>
+          <input
+            (change)="changeTodoStatus(todo.id)"
+            [checked]="todo.isCompleted"
+            type="checkbox"
+          />
+        </th>
+        <td [ngClass]="{ completedTodoLine: todo.isCompleted }">
+          {{ todo.title }}
+        </td>
+        <td [ngClass]="{ completedTodoLine: todo.isCompleted }">
+          {{ todo.date | date: "short" }}
+        </td>
+        <td>
+          <img
+            (click)="deleteTodo(todo.id)"
+            src="../../../assets/trash.png"
+            height="35"
+            width="35"
+            alt=""
+          />
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</ng-template>

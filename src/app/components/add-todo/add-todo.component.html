@@ -1,0 +1,14 @@
+<div class="input-group mt-4 mb-4">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="basic-addon1">ToDo</span>
+  </div>
+  <input
+    type="text"
+    class="form-control"
+    placeholder="Add New Todo"
+    [(ngModel)]="todoTitle"
+  />
+  <div class="input-group-prepend">
+    <button (click)="addTodo()" class="btn btn-dark">Add Todo</button>
+  </div>
+</div>
